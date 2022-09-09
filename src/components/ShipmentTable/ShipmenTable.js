@@ -6,14 +6,13 @@ import ShipmentDisplay from './ShipmentDisplay'
 const ShipmenTable = () => {
 
     const [shipment, setShipment] = useState([])
-
-
+    
     useEffect(() => {
-        fetch('https://my.api.mockaroo.com/shipments.json?key=5e0b62d0')
+        fetch('Shipments.json')
             .then(res => res.json())
             .then(data => {
                 setShipment(data)
-                console.log(data)
+                //console.log(data)
             })
 
     }, [])
