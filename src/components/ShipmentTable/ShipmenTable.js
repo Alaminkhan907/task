@@ -33,7 +33,6 @@ const ShipmenTable = () => {
         getUser();
     }, [])
 
-        //console.log(modal);
     const [modalIsOpen, setIsOpen] = useState(false);
     
     function openModal() {
@@ -42,6 +41,12 @@ const ShipmenTable = () => {
     }
     function closeModal() {
         setIsOpen(false);
+    }
+
+    const handleDelete = (event) =>{
+        console.log(event);
+        const remaining = shipment.filter(s =>s.orderNo !== event);
+        setShipment(remaining);
     }
     
        
@@ -66,7 +71,7 @@ const ShipmenTable = () => {
                             <td >{shipment.status}</td>
                             <td >{shipment.consignee}</td>
                             <button  onClick={()=>{openModal();setModal(shipment);}}>Update</button>
-                            <button >Delete</button>
+                            <button  onClick={()=>handleDelete(shipment.orderNo)}>Delete</button>
                         </tr>
                         )
                     }
