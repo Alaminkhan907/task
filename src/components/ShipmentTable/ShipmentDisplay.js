@@ -14,18 +14,10 @@ const customStyles = {
 };
 Modal.setAppElement('#root');
 
-const ShipmentDisplay = ({ modal }) => {
+const ShipmentDisplay = ({ modal ,modalIsOpen ,closeModal}) => {
     const { orderNo } = modal;
-   
-    const [modalIsOpen, setIsOpen] = useState(false);
+   console.log(orderNo);
     
-    function openModal() {
-        setIsOpen(true);
-    }
-    function closeModal() {
-        setIsOpen(false);
-    }
-    openModal();
     return (
         <div>
             <Modal

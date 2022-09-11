@@ -8,6 +8,7 @@ const ShipmenTable = () => {
 
     const [shipment, setShipment] = useState([])
     const [ modal , setModal] = useState(null);
+    
 
     {/* useEffect(() => {
         fetch('Shipments.json')
@@ -33,6 +34,16 @@ const ShipmenTable = () => {
     }, [])
 
         //console.log(modal);
+    const [modalIsOpen, setIsOpen] = useState(false);
+    
+    function openModal() {
+        setIsOpen(true);
+        console.log('Modal opened');
+    }
+    function closeModal() {
+        setIsOpen(false);
+    }
+    
        
     return (
         <div >
@@ -54,13 +65,13 @@ const ShipmenTable = () => {
                             <td >{shipment.trackingNo}</td>
                             <td >{shipment.status}</td>
                             <td >{shipment.consignee}</td>
-                            <button onClick={()=>setModal(shipment)} >Update</button>
+                            <button  onClick={()=>{openModal();setModal(shipment);}}>Update</button>
                             <button >Delete</button>
                         </tr>
                         )
                     }
             </table>
-            {modal  && <ShipmentDisplay modal={modal} ></ShipmentDisplay>}
+            {modal  &&<ShipmentDisplay modal={modal} modalIsOpen={modalIsOpen} closeModal={closeModal} ></ShipmentDisplay>}
         </div>
     )
 }
