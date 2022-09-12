@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import ShipmentDisplay from './ShipmentDisplay'
+import {Table} from '../styles/Table.styled';
+
 
 
 
@@ -51,31 +53,38 @@ const ShipmenTable = () => {
     
        
     return (
-        <div >
-            <table className="table table-striped table-hover">
-                    <tr >
-                        <th scope="col">Oder Number</th>
-                        <th scope="col">Delivery Date</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Tracking</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Consignee</th>
+        <div style={{display: 'flex' ,justifyContent: 'center'}}>
+            <Table> 
+                <thead>
+                    <tr class="head-data">
+                        <td>Oder Number</td>
+                        <td>Delivery Date</td>
+                        <td>Customer</td>
+                        <td>Tracking</td>
+                        <td>Status</td>
+                        <td class="last-td">Consignee</td>
+                        <td></td>
                     </tr>
-
+                </thead>
+                
+                <tbody>
                     {
-                        shipment.map(shipment => <tr >
-                            <td >{shipment.orderNo}</td>
-                            <td >{shipment.date}</td>
-                            <td >{shipment.customer}</td>
-                            <td >{shipment.trackingNo}</td>
-                            <td >{shipment.status}</td>
-                            <td >{shipment.consignee}</td>
-                            <button  onClick={()=>{openModal();setModal(shipment);}}>Update</button>
-                            <button  onClick={()=>handleDelete(shipment.orderNo)}>Delete</button>
+                        shipment.map(shipment => <tr>
+                            <td>{shipment.orderNo}</td>
+                            <td>{shipment.date}</td>
+                            <td>{shipment.customer}</td>
+                            <td>{shipment.trackingNo}</td>
+                            <td>{shipment.status}</td>
+                            <td class="last-td">{shipment.consignee}</td>
+                            <td>
+                                <button  onClick={()=>{openModal();setModal(shipment);}}>Update</button>
+                                <button  onClick={()=>handleDelete(shipment.orderNo)}>Delete</button>
+                            </td>
                         </tr>
                         )
                     }
-            </table>
+                </tbody>  
+            </Table>
             {modal  &&<ShipmentDisplay modal={modal} modalIsOpen={modalIsOpen} closeModal={closeModal} ></ShipmentDisplay>}
         </div>
     )
