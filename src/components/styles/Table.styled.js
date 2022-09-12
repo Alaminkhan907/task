@@ -19,6 +19,11 @@ export const Table = styled.table`
 
     .last-td {
         padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    tbody td input {
+        padding-right: .8rem;
+        width: 40px;
     }
     
 `

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import ShipmentDisplay from './ShipmentDisplay'
-import {Table} from '../styles/Table.styled';
-
-
+import {Table} from '../styles/Table.styled'
+import remove from './remove.png'
+import display from './display.png'
 
 
 const ShipmenTable = () => {
@@ -56,13 +56,13 @@ const ShipmenTable = () => {
         <div style={{display: 'flex' ,justifyContent: 'center'}}>
             <Table> 
                 <thead>
-                    <tr class="head-data">
+                    <tr className="head-data">
                         <td>Oder Number</td>
                         <td>Delivery Date</td>
                         <td>Customer</td>
                         <td>Tracking</td>
                         <td>Status</td>
-                        <td class="last-td">Consignee</td>
+                        <td className="last-td">Consignee</td>
                         <td></td>
                     </tr>
                 </thead>
@@ -75,10 +75,10 @@ const ShipmenTable = () => {
                             <td>{shipment.customer}</td>
                             <td>{shipment.trackingNo}</td>
                             <td>{shipment.status}</td>
-                            <td class="last-td">{shipment.consignee}</td>
+                            <td className="last-td">{shipment.consignee}</td>
                             <td>
-                                <button  onClick={()=>{openModal();setModal(shipment);}}>Update</button>
-                                <button  onClick={()=>handleDelete(shipment.orderNo)}>Delete</button>
+                                <input type="image" src={display} alt="display" style={{width:"35px"}} onClick={()=>{openModal();setModal(shipment);}}></input>
+                                <input type="image" src={remove} alt="Remove" style={{width:"35px"}}onClick={()=>handleDelete(shipment.orderNo) } ></input>
                             </td>
                         </tr>
                         )
